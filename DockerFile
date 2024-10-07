@@ -1,0 +1,7 @@
+FROM python:3 as base
+WORKDIR /app
+COPY . /app
+RUN python -m venv /bicimadrid
+RUN pip install -r requirements.txt
+EXPOSE 5000
+CMD ["python", "./app.py"]

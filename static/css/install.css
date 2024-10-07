@@ -1,0 +1,63 @@
+#snackbar {
+  visibility: hidden;
+  min-width: 350px;
+  background-color: rgba(51, 51, 51, 0.5); /* semi-transparent */
+  color: #fff;
+  text-align: center;
+  border-radius: 25px; /* rounded corners */
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%); /* centering */
+  font-size: 17px;
+  display: flex;
+  /* justify-content: space-between;
+  align-items: center; */
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 6.5s;
+  animation: fadein 0.5s, fadeout 0.5s 6.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 120px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 120px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 120px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 120px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+#install-btn {
+  background-color: #006ce0;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+#install-btn:hover {
+  background-color: white;
+  color: black;
+}

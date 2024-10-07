@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" href="/static/images/maskable/favicon.ico">
+  <link rel="shortcut icon" href="/static/images/maskable/favicon.ico">
+  <link rel="manifest" href="/static/manifest.json">
+  <meta name="theme-color" content="#a16884">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Bici">
+  <meta name="msapplication-TileColor" content="#3f51b5">
+  <meta name="msapplication-TileImage" content="/static/images/maskable/maskable_icon_x384.png">
+  <meta name="msapplication-config" content="/static/browserconfig.xml">
+  <title>Descubre BiciMadrid - Mapas Interactivo de estaciones/anclajes y bicicletas disponibles en Madrid</title>
+  <meta name="description" content="Descubre BiciMadrid - Mapas Interactivo de estaciones/anclajes y bicicletas disponibles en Madrid">
+  <meta name="keywords" content="bicicletas, movilidad sostenible, mapas interactivos, estaciones de bicicletas, explorar ciudades en bicicleta">
+  <meta name="author" content="KashaMalaga">
+  <link rel="mask-icon" href="/static/images/maskable/safari-pinned-tab.svg" color="#a16884">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/images/maskable/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/images/maskable/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/images/maskable/favicon-16x16.png">
+  <link rel="icon" type="image/png" href="/static/images/maskable/maskable_icon.png">
+  <link rel="icon" type="image/png" sizes="384x384" href="/static/images/maskable/maskable_icon_x384.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/static/images/maskable/maskable_icon_x512.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="/static/images/maskable/maskable_icon_x128.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/static/images/maskable/maskable_icon_x192.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/static/images/maskable/maskable_icon_x96.png">
+  <link rel="icon" type="image/png" sizes="72x72" href="/static/images/maskable/maskable_icon_x72.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="/static/images/maskable/maskable_icon_x48.png">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/index.css">
+  <link rel="stylesheet" href="/static/css/install.css">
+  <script src="/static/js/jquery-3.7.0.js"></script>
+  <script src="https://kit.fontawesome.com/3bc0f29752.js" crossorigin="anonymous"></script>
+  <script src="/static/js/darkmode.js"></script>
+  {{index.js}}
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <p>Este sitio web es una aplicación NO oficial de PBSC. Todos los logotipos, marcas comerciales y derechos de
+        autor pertenecen a sus respectivos propietarios. No tenemos ninguna afiliación ni relación oficial con la
+        empresa mencionada.</p>
+    </div>
+  </div>
+</head>
+
+<body {% if mode=='night' %} class="night-mode" {% endif %}>
+  <script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="168210" async="async" type="text/javascript"></script>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <ul class="flashes">
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }}" role="alert">{{ message|safe }}</div>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
+   <!-- Snackbar -->
+   <div id="snackbar">
+    <p>Para disfrutar de una mejor experiencia puede instalarla&emsp; </p>
+    <button id="install-btn" class="fa fa-download"></button>
+  </div>
+  <div id="legend" style="display: none;">
+    <ul>  
+        <strong><u>Leyenda Mapa</u></strong>
+        <li><img src="/static/images/markers/1.png" alt="1-9 Bicicletas"> - Entre 1-9 bicicletas</li>
+        <li><img src="/static/images/markers/go.png" alt="≥10 y ≤19 Bicicletas"> - ≥ 10 y ≤ 19 bicicletas disponibles</li>
+        <li><img src="/static/images/markers/fire.png" alt="+20 Bicicletas"> - ≥20 bicicletas disponibles</li>
+        <li><img src="/static/images/markers/stop.png" alt="Sin Bicicletas"> - No hay ninguna bicicleta en la estación</li>
+        <li><img src="/static/images/markers/deactivated.png" alt="Estación Desactivada"> - Si la estación está desactivada</li>
+        <strong><u>Iconos estación</u></strong>
+        <li><span>🚴‍♂️💨</span> - Bicicletas en overflow</li>
+        <li><span>🚲</span> - Bicicletas disponibles</li>
+        <li><span>🅿️</span> - Espacios para parking</li>
+        <li><span>🔧</span> - Bicicletas rotas</li>
+        <li><span>🅿️🚫</span> - Anclajes no disponibles</li>
+        <li><span>🚧</span> - Zona de geovallado (visible cuando 🅿️ ≤2)</li>
+        <li><span>🔌🚫</span> - Estación sin electricidad</li>
+    </ul>
+</div>
+  <main>
+    {{ index.html }}
+  </main>
+  <div id="overlay-menu" style="position: fixed; bottom: 4%; right: 20px; z-index: 1000; display: flex; align-items: center; width: 350px;"> <!-- Adjust the width as necessary -->
+    <label>
+      <input type="checkbox" id="autoRefreshCheckbox" onclick="toggleAutoRefresh()" checked> <i class="fa fa-refresh" aria-hidden="true"></i>
+  </label>
+    <a href="https://donate.stripe.com/7sIeVF11J3pJ0Te000" class="btn btn-info" style="flex-grow: 8; margin-right: 10px;" data-toggle="tooltip" data-placement="top">
+      <i class="fas fa-donate" style="color: white;"></i>
+    </a>
+    <!-- Tracking -->
+    <a href="https://bici.betteruptime.com/" class="btn btn-info" style="flex-grow: 1;" id="login-link" data-toggle="tooltip" data-placement="top">
+    <i class="fas fa-globe" style="color: white;"></i>
+    </a>
+    <!-- Telegram -->
+    <a href="https://t.me/BiciMadrid" target="_blank" rel="noopener noreferrer" class="btn btn-info" style="flex-grow: 1;" id="login-link" data-toggle="tooltip" data-placement="top">
+      <i class="fab fa-telegram-plane" style="color: white;"></i>
+    </a>
+    <!-- NightMode -->
+    <a href="#" id="mode-toggle" class="btn btn-info" style="flex-grow: 1;" id="login-link" data-toggle="tooltip" data-placement="top">
+    <i class="fas fa-moon" style="color: white;"></i>
+    </a>
+    <!-- Legend Button -->
+    <button id="toggle-legend" class="btn btn-primary" style="flex-grow: 1;" aria-label="Question">
+      <i class="fa fa-question-circle"></i>
+    </button>
+  </div>
+  <script src="/static/js/index.js"></script>
+  <script src="/static/js/location.js"></script>
+  <script src="/static/js/autorefresh.js"></script>
+  <script src="/static/js/install.js"></script>
+</body>
+</html>

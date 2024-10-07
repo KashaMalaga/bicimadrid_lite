@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+  <script src="/static/js/jquery-3.7.0.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://kit.fontawesome.com/3bc0f29752.js" crossorigin="anonymous"></script>
+  <script src="/static/js/darkmode.js"></script>
+  <link rel="manifest" href="/static/manifest.json">
+</head>
+<body>
+    <h2>Oops, algo fue mal por aquí detrás!</h2>
+    <img src="{{ image_url }}" style="width:50%;">
+    <p>Guardamos el error para repararlo próximamente, te invitamos a volver más tarde</p>
+    <br>
+    <a href="{{ url_for('index') }}" class="btn btn-info" role="button">Volver al Mapa</a>
+</body>
+</html>

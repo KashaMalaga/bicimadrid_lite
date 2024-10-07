@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+#python venv folder
+bicimadrid_lite/
 
 # C extensions
 *.so
