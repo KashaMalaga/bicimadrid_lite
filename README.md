@@ -1,6 +1,9 @@
 # bicimadrid_lite
  WebApp base on Flask app, realtime map from BiciMad API from Madrid city
 
+#DEPLOYED in Vercel
+https://bicimadrid-lite.vercel.app/
+
 Easy Steps to have it working:
 
 python -m venv bicimadrid_lite
@@ -9,3 +12,4 @@ pip install -r .\requirements.txt
 flask run --host=0.0.0.0 --debug
 
 You will need a Google Maps API KEY, current one its only for Development purposes :)
+
