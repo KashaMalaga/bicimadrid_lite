@@ -7,7 +7,7 @@ colorama==0.4.6
 distlib==0.3.8
 filelock==3.13.1
 Flask==3.0.2
-./vendor/Flask3-GoogleMaps
+flask_googlemaps @ git+https://github.com/KashaMalaga/Flask3-GoogleMaps.git@fb517028ac63a11cc07d3b6fe708640f8a3d2e8e
 gunicorn==21.2.0
 idna==3.6
 itsdangerous==2.1.2
