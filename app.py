@@ -11,7 +11,7 @@ import os
 import api_pbsc
 import app_drawer
 
-google_apikey="AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao" #TEST KEY :D
+google_apikey = os.getenv("CLIENT_KEY_MAPS") or "AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao" #TEST KEY :D
 refresh_interval = 30 #seconds
 app = Flask(__name__, template_folder="templates",static_url_path='/static')
 
